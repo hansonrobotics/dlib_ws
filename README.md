@@ -4,15 +4,18 @@ ROS based workspace for dlib_puppeteering and related ROS packages.
 A ros based package for puppeteering with dlib capability is currently in progressive development.
 ## Install and run
 Open a new terminal and execute the following commands one by one.
+
+`git clone https://github.com/hansonrobotics/dlib_ws.git` # Get the necessary ros packages and source codes
 ```
-git clone https://github.com/hansonrobotics/dlib_ws.git # Get the necessary ros packages and source codes
 cd dlib_ws
 catkin_make
 source devel/setup.bash
 cd src
 pip3 install -t ../devel/lib/python2.7/dist-packages/ ./blender_api_msgs```
+```
 In the same terminal or another run the command below to launch "dlib_puppeteering" package.
-```roslaunch dlib_puppeteering dlib_listener.launch 
+```
+roslaunch dlib_puppeteering dlib_listener.launch 
 ```
 To start/see the mapping/link between dlib_puppeteering and blender_api, Open a new terminal and execute the commands below.
 ```
@@ -22,11 +25,12 @@ blender -y Sophia.blend -P autostart.py
 NOTE: the following changes has been made to some parameters in ../blender_api/rigControl/commands.py
 
 16 - Face shapekeys controlled by PAU
+
 `self.pauAnimationMode = 16`
 
 If 1 current shapekeys are controlled directly by PAU, otherwise by default drivers
-`self.shapekeysControl = 1`
 
+`self.shapekeysControl = 1`
 ## To Exit,
 ```
 close blender GUI.
