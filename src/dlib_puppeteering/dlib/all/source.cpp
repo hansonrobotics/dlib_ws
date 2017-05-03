@@ -20,6 +20,12 @@
 #include "../tokenizer/tokenizer_kernel_1.cpp"
 #include "../unicode/unicode.cpp"
 #include "../data_io/image_dataset_metadata.cpp"
+#include "../data_io/mnist.cpp"
+
+// Stuff that requires C++11
+#include "../dnn/cpu_dlib.cpp"
+#include "../dnn/tensor_tools.cpp"
+
 
 #ifndef DLIB_ISO_CPP_ONLY
 // Code that depends on OS specific APIs
@@ -51,6 +57,7 @@
 #include "../threads/threads_kernel_2.cpp"
 #include "../threads/threads_kernel_shared.cpp"
 #include "../threads/thread_pool_extension.cpp"
+#include "../threads/async.cpp"
 #include "../timer/timer.cpp"
 #include "../stack_trace.cpp"
 
