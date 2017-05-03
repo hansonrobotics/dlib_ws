@@ -1,8 +1,8 @@
 # dlib_ws
 ROS based workspace for dlib_puppeteering and related ROS packages.
-# dlib_puppeteering
+## dlib_puppeteering
 A ros based package for puppeteering with dlib capability is currently in progressive development.
-# Install and run
+## Install and run
 Open a new terminal and execute the following commands one by one.
 ```
 git clone https://github.com/hansonrobotics/dlib_ws.git # Get the necessary ros packages and source codes
