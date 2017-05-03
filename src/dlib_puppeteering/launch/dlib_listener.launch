@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find dlib_puppeteering)/launch/camera.launch"/> <!--camera-->
+    <node name="dlib_puppeteering_node" pkg="dlib_puppeteering" type="dlib_puppeteering_node" output="screen">
+    </node>
+    <node name="dlib_listener_node" pkg="dlib_puppeteering" type="dlib_listener_node" output="screen"/>
+    <node name="dlib_mapper" pkg="dlib_puppeteering" type="blendshapes_mapper.py" output="screen"/>
+</launch>
