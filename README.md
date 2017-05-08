@@ -11,7 +11,7 @@ cd dlib_ws
 catkin_make
 source devel/setup.bash
 cd src
-pip3 install -t ../devel/lib/python2.7/dist-packages/ ./blender_api_msgs```
+pip3 install -t ../devel/lib/python2.7/dist-packages/ ./blender_api_msgs
 ```
 In the same terminal or another run the command below to launch "dlib_puppeteering" package.
 ```

@@ -1,0 +1,8 @@
+prefix=/home/esku/dlib_ws/install
+
+Name: pau2motors
+Description: Description of pau2motors
+Version: 0.0.1
+Cflags: -I/home/esku/dlib_ws/install/include
+Libs: -L/home/esku/dlib_ws/install/lib 
+Requires: rospy std_msgs message_runtime
