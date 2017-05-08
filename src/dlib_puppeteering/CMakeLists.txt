@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   usb_cam
+  message_generation
 )
 find_package(OpenCV REQUIRED)
 
@@ -49,11 +50,11 @@ find_package(OpenCV REQUIRED)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
+add_message_files(
+   FILES
 #   Message1.msg
-#   Message2.msg
-# )
+      lm_points.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -70,10 +71,10 @@ find_package(OpenCV REQUIRED)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs  # Or other packages containing msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -94,9 +95,9 @@ find_package(OpenCV REQUIRED)
   #cfg/dlib_blender_mapping.cfg
 #   cfg/DynReconf2.cfg
 #)
-generate_dynamic_reconfigure_options(
-  cfg/dlib_blender_mapping.cfg
-)
+#generate_dynamic_reconfigure_options(
+ # cfg/dlib_blender_mapping.cfg
+#)
 #
 ###################################
 ## catkin specific configuration ##
@@ -143,14 +144,14 @@ include(dlib/cmake)
 ## Declare a C++ executable
 # add_executable(dlib_puppeteering_node src/dlib_puppeteering_node.cpp)
 # to be writen in the launcher
-add_executable(dlib_puppeteering_node src/dlib_face.cpp)
-add_executable(dlib_listener_node src/dlib_listener.cpp)
+add_executable(dlib_puppeteering_node src/dlib_facenew.cpp)
+#add_executable(dlib_listener_node src/dlib_listener.cpp)
 
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(dlib_puppeteering_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(dlib_listener_node ${PROJECT_NAME}_gencfg)
+#add_dependencies(dlib_listener_node ${PROJECT_NAME}_gencfg)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(dlib_puppeteering_node
@@ -159,7 +160,7 @@ add_dependencies(dlib_listener_node ${PROJECT_NAME}_gencfg)
 target_link_libraries(dlib_puppeteering_node ${catkin_LIBRARIES})
 target_link_libraries(dlib_puppeteering_node dlib ${OpenCV_LIBS})
 
-target_link_libraries(dlib_listener_node ${catkin_LIBRARIES})
+#target_link_libraries(dlib_listener_node ${catkin_LIBRARIES})
 
 
 

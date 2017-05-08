@@ -18,6 +18,9 @@
 #include <cstdlib> //random
 #include <iostream> //random
 
+#include <dlib_puppeteering/lm_points.h>
+
+
 using namespace std;
 using namespace cv;
 using namespace dlib;
@@ -35,6 +38,12 @@ double roundOff_bvaR = 0.000;
 
 double bvaL = 0;
 double roundOff_bvaL = 0.000;
+
+std::vector<float> dlibX;
+std::vector<float> dlibY;
+std::vector<int> dlibFaceIndex;//face count
+
+double dlibXAvg, dlibYAvg, sumX, sumY;
 
 dlib::image_window win;
 dlib::frontal_face_detector detector;
@@ -72,75 +81,63 @@ void dlibCallback(const sensor_msgs::ImageConstPtr& msg) {
     // Display it all on the screen
     win.clear_overlay();
     win.set_image(cimg);
-//    win.add_overlay(render_face_detections(shapes));
+    win.add_overlay(render_face_detections(shapes));
 
     //Declare variables to process and store messages to be published
-    std_msgs::String smsg;
-    std::stringstream ss;
+    dlib_puppeteering::lm_points dlibValues;
 
     //Enters if any shape detected has dlib drawn overlays
     if(shapes.size()>0){
+        dlibX.clear();
+        dlibY.clear();
+        dlibFaceIndex.clear();
+
+        // Format the values to be published on "/dlib_values"
+        // for all/each faces on the frame store dlib values(x and y), dlib count-no. of faces on the frame
+        // the vectors dlibX and dlibY contains dlib values for all faces on the frame at once in the order of
+        // of the detected face first, second and etc... so ets size=no_of_face * 68-facelandmarks.
 
         for (unsigned long i = 0; i < shapes.size(); ++i) // Iterate through shapes
         {                    
             const full_object_detection& d = shapes[i]; // Hold the detected face i
-            for (unsigned long i = 0; i < 68; ++i) // Hold all the 68 face landmark coordinates(x, y)
+            for (unsigned long j = 0; j < 68; ++j) // Hold all the 68 face landmark coordinates(x, y)
             {
-                lmPoints[i][0] = (double)d.part(i).x();
-                lmPoints[i][1] = (double)d.part(i).y();
+                lmPoints[j][0] = (double)d.part(j).x();
+                lmPoints[j][1] = (double)d.part(j).y();
+            }
+            //Normalization
+            //better to do normalization here than doing inside mapper because
+            //if the number of faces are greater than one then separating the first face
+            //values in mapper is tedious to do normalization and publish the normalized values.
+
+            dlibXAvg = 0;
+            dlibYAvg = 0;
+
+            for(unsigned long a = 0; a < 68; ++a){
+                dlibXAvg = dlibXAvg+lmPoints[a][0];
+                dlibYAvg = dlibYAvg+lmPoints[a][1];
+            }
+            dlibXAvg = dlibXAvg/68;
+            dlibYAvg = dlibYAvg/68;
+
+            dlibFaceIndex.push_back(i);
+            for (unsigned long c = 0; c < 68; ++c)
+            {
+                dlibX.push_back(lmPoints[c][0] - dlibXAvg);
+                dlibY.push_back(lmPoints[c][1] - dlibYAvg);
             }
         }
 
-        // Do something for publishing
+        std::cout<<"\nDlib-INFO: Processing Face Detected!"<<std::endl;
 
-        publish = true;
-        if (publish) 
-        {
-            // Publish- shapekeyname:shapekeyvalue;shapekeyname:shapekeyvalue... etc
-            publish = false;
-            const char* const list[] = {"browCenterUP", "browCenterDN", "browInnerUPL",  "browInnerDNL", "browInnerUPR", "browInnerDNR", 
-                                         "browOuterUPL", "browOuterDNL", "browOuterupR", "browOuterDNR", "winceL", "winceR",
-                                         "sneerL", "sneerR", "eyesLookdn", "eyeslookup", "eyeFlareUPL", "eyeBlinkUPL",
-                                         "eyeFlareUPR", "eyeBlinkUPR", "eyeBlinkLOL", "eyeFlareLOL", "eyeBlinkLOR", "eyeFlareLOR",
-                                         "lipUPCUP", "lipUPCDN", "lipUPLUP", "lipUPLDN", "lipUPRUP", "lipUPRDN",
-                                         "lipsSmileL", "lipsSmileR", "lipsWideL", "lipsNarrowL", "lipsWideR", "lipsNarrowR",
-                                         "lipDNCDN", "lipDNCUP", "lipDNLDN", "lipDNLUP", "lipDNRDN", "lipDNRUP",
-                                         "lipsFrownL", "lipsFrownR", "lipJAWDN"
-            };
+        dlibValues.dlib_X = dlibX;
+        dlibValues.dlib_Y = dlibY;
+        dlibValues.dlib_face_index = dlibFaceIndex;
 
-            const size_t len = sizeof(list) / sizeof(list[0]);
-            double r;
-    
-            // Format the string to be published on "/dlib_values"
-            for (size_t i = 0; i < len; ++i)
-            {
-//                roundOff_bvaL = 0.9;
-//                roundOff_bvaR = 0.9;
-                std::srand(time(NULL));
-                double roundOff_bvaL = (double)std::rand() / ((double)RAND_MAX);
-                double roundOff_bvaR = (double)std::rand() / ((double)RAND_MAX);
-
-
-                if (list[i] == "lipsWideR")
-                {                    
-                    ss<<list[i]<<":"<<roundOff_bvaL;
-                }else if (list[i] == "lipsWideL"){
-                    ss<<list[i]<<":"<<roundOff_bvaR;
-                }else{
-                    ss<<list[i]<<":"<<0.0;
-                }
-                if (i < len-1)
-                {
-                    ss<<";"; // size-1 to remove the last "semicolon(;)"
-                }
-            }
-            std::cout<<"\n########  List:  ########\n"<<ss.str()<<endl;
-            smsg.data = ss.str();
-            pub.publish(smsg);
-        }
+        pub.publish(dlibValues);
     } 
     else{
-        cout<<"\nDlib-INFO: No Face Detected!"<<endl;
+        std::cout<<"\nDlib-INFO: No Face Detected!"<<std::endl;
     }
 }
 
@@ -153,7 +150,7 @@ int main(int argc, char **argv) {
         dlib::deserialize(homedir+"/shape_predictor_68_face_landmarks.dat") >> pose_model;
         ros::init(argc, argv, "dlib_puppeteering_node");
         ros::NodeHandle nh;
-        pub = nh.advertise<std_msgs::String>("/dlib_values", 1000);
+        pub = nh.advertise<dlib_puppeteering::lm_points>("/dlib_values", 1000);
         ros::Subscriber sub = nh.subscribe("/usb_cam_node/image_raw", 1, dlibCallback);
         ros::spin();
     }
@@ -161,3 +158,4 @@ int main(int argc, char **argv) {
         std::cout<<"Unable to locate home directory... \nplease set home directory..."<<endl;
     }
 }
+

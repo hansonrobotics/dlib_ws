@@ -39,3 +39,4 @@ Unable to open /home/esku/catkin_ws/src/dlib_puppeteering/src/shape_predictor_68
 log file: /home/wessi/.ros/log/746c1e46-20b2-11e6-96af-94de80604b3b/dlib_puppeteering_node-3*.log
 
 you have to download and change the location of (shape_predictor_68_face_landmarks.dat)[]
+
