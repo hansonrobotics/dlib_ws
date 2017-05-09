@@ -82,8 +82,8 @@ class dlib_puppeteering:
               blendshape_values.append(0.0)
       return blendshape_values
 
-  def normalize(pts):
-      return np.subtract(pts, pts.mean(axis=0))
+  # def normalize(pts):
+  #     return np.subtract(pts, pts.mean(axis=0))
 
 def main(args):
   rospy.init_node('dlib2blender_mapper', anonymous=True)

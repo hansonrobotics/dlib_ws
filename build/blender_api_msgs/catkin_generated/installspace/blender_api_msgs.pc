@@ -1,8 +1,0 @@
-prefix=/home/esku/dlib_ws/install
-
-Name: blender_api_msgs
-Description: Description of blender_api_msgs
-Version: 0.2.0
-Cflags: -I/home/esku/dlib_ws/install/include
-Libs: -L/home/esku/dlib_ws/install/lib 
-Requires: 
