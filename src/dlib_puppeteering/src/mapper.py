@@ -37,39 +37,39 @@ class dlib_puppeteering:
   # callback: gets relative distance of DLIB's land marks per their corresponding shapekey
   def dlib_callback(self, data):
 
-          self.dlibX = data.dlib_X
-          self.dlibY = data.dlib_Y
-          self.dlibFaceIndex = data.dlib_face_index
+      self.dlibX = data.dlib_X
+      self.dlibY = data.dlib_Y
+      self.dlibFaceIndex = data.dlib_face_index
 
-          # x = np.array(self.dlibX)
-          # y = np.array(self.dlibY)
-          # z = np.column_stack((x, y))
+      # x = np.array(self.dlibX)
+      # y = np.array(self.dlibY)
+      # z = np.column_stack((x, y))
 
-          head_pau = pau()
+      head_pau = pau()
 
-          head_pau.m_headRotation.x = 0.9
-          head_pau.m_headRotation.y = 0.5
-          head_pau.m_headRotation.z = 0.7
-          head_pau.m_headRotation.w = 0.9
+      head_pau.m_headRotation.x = 0.9
+      head_pau.m_headRotation.y = 0.5
+      head_pau.m_headRotation.z = 0.7
+      head_pau.m_headRotation.w = 0.9
 
-          head_pau.m_headTranslation.x =0.9
-          head_pau.m_headTranslation.y =0.7
-          head_pau.m_headTranslation.z =0.8
+      head_pau.m_headTranslation.x =0.9
+      head_pau.m_headTranslation.y =0.7
+      head_pau.m_headTranslation.z =0.8
 
-          head_pau.m_neckRotation.x= -0.9
-          head_pau.m_neckRotation.y= -0.5
-          head_pau.m_neckRotation.z= 0.5
-          head_pau.m_neckRotation.w= 0.9
+      head_pau.m_neckRotation.x= -0.9
+      head_pau.m_neckRotation.y= -0.5
+      head_pau.m_neckRotation.z= 0.5
+      head_pau.m_neckRotation.w= 0.9
 
-          head_pau.m_eyeGazeLeftPitch = 0.01
-          head_pau.m_eyeGazeLeftYaw = 0.1
-          head_pau.m_eyeGazeRightPitch = 0.01
-          head_pau.m_eyeGazeRightYaw = 0.1
+      head_pau.m_eyeGazeLeftPitch = 0.01
+      head_pau.m_eyeGazeLeftYaw = 0.1
+      head_pau.m_eyeGazeRightPitch = 0.01
+      head_pau.m_eyeGazeRightYaw = 0.1
 
-          head_pau.m_shapekeys = self.blendshape_names
-          head_pau.m_coeffs = self.doMapping()
+      head_pau.m_shapekeys = self.blendshape_names
+      head_pau.m_coeffs = self.doMapping()
 
-          self.pub_pau.publish(head_pau) # publish to "/blender_api/set_pau"
+      self.pub_pau.publish(head_pau) # publish to "/blender_api/set_pau"
 
   def doMapping(self):
       blendshape_values = []
