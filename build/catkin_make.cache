@@ -1,0 +1,2 @@
+blender_api_msgs:dlib_puppeteering:pau2motors
+-DCATKIN_DEVEL_PREFIX=/home/esku/dlib_ws/devel -DCMAKE_INSTALL_PREFIX=/home/esku/dlib_ws/install -G Unix Makefiles

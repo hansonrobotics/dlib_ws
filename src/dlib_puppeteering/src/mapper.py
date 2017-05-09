@@ -8,7 +8,7 @@ import cv2
 from pau2motors.msg import pau
 from dlib_puppeteering.msg import lm_points
 roslib.load_manifest('dlib_puppeteering')
-
+import numpy as np
 import random
 
 class dlib_puppeteering:
@@ -19,6 +19,7 @@ class dlib_puppeteering:
     self.dlibX = []
     self.dlibY = []
     self.dlibFaceIndex = []
+
     self.indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]  # shapekey indexes tobe mapped
 
     self.pub_pau = rospy.Publisher('/blender_api/set_pau', pau, queue_size=10)
@@ -39,6 +40,10 @@ class dlib_puppeteering:
           self.dlibX = data.dlib_X
           self.dlibY = data.dlib_Y
           self.dlibFaceIndex = data.dlib_face_index
+
+          # x = np.array(self.dlibX)
+          # y = np.array(self.dlibY)
+          # z = np.column_stack((x, y))
 
           head_pau = pau()
 
@@ -76,6 +81,9 @@ class dlib_puppeteering:
           else:
               blendshape_values.append(0.0)
       return blendshape_values
+
+  def normalize(pts):
+      return np.subtract(pts, pts.mean(axis=0))
 
 def main(args):
   rospy.init_node('dlib2blender_mapper', anonymous=True)
