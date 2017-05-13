@@ -104,6 +104,8 @@ void dlibCallback(const sensor_msgs::ImageConstPtr& msg) {
             {
                 lmPoints[j][0] = (double)d.part(j).x();
                 lmPoints[j][1] = (double)d.part(j).y();
+                dlibX.push_back(lmPoints[j][0]);
+                dlibY.push_back(lmPoints[j][1]);
             }
             //Normalization
             //better to do normalization here than doing inside mapper because
@@ -113,19 +115,19 @@ void dlibCallback(const sensor_msgs::ImageConstPtr& msg) {
             dlibXAvg = 0;
             dlibYAvg = 0;
 
-            for(unsigned long a = 0; a < 68; ++a){
+            /*for(unsigned long a = 0; a < 68; ++a){
                 dlibXAvg = dlibXAvg+lmPoints[a][0];
                 dlibYAvg = dlibYAvg+lmPoints[a][1];
             }
             dlibXAvg = dlibXAvg/68;
-            dlibYAvg = dlibYAvg/68;
+            dlibYAvg = dlibYAvg/68;*/
 
             dlibFaceIndex.push_back(i);
-            for (unsigned long c = 0; c < 68; ++c)
+            /*for (unsigned long c = 0; c < 68; ++c)
             {
                 dlibX.push_back(lmPoints[c][0] - dlibXAvg);
                 dlibY.push_back(lmPoints[c][1] - dlibYAvg);
-            }
+            }*/
         }
 
         std::cout<<"\nDlib-INFO: Processing Face Detected!"<<std::endl;
