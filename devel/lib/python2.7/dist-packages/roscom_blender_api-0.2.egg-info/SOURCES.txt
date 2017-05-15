@@ -1,0 +1,8 @@
+src/roscom/__init__.py
+src/roscom/helpers.py
+src/roscom_blender_api.egg-info/PKG-INFO
+src/roscom_blender_api.egg-info/SOURCES.txt
+src/roscom_blender_api.egg-info/dependency_links.txt
+src/roscom_blender_api.egg-info/entry_points.txt
+src/roscom_blender_api.egg-info/top_level.txt
+test/test_blender_api.py

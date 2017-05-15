@@ -1,0 +1,8 @@
+prefix=/home/icog-labs/dlib_ws/devel
+
+Name: dlib_puppeteering
+Description: Description of dlib_puppeteering
+Version: 0.0.0
+Cflags: -I/home/icog-labs/dlib_ws/devel/include
+Libs: -L/home/icog-labs/dlib_ws/devel/lib 
+Requires: message_runtime

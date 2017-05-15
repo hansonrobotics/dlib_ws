@@ -52,6 +52,7 @@ ros::Publisher pub;
 
 void dlibCallback(const sensor_msgs::ImageConstPtr& msg) {
 
+//    cap::VideoCapture("path");
     // Declare a variable to hold converted image(from ros to opencv)
     cv_bridge::CvImagePtr cvPtr;
     try {
@@ -64,6 +65,7 @@ void dlibCallback(const sensor_msgs::ImageConstPtr& msg) {
 
     // Declare a variable to hold an image frame and grab a frame
     cv::Mat temp;
+//    cap >> temp
     temp = cvPtr->image;
 
     // Turn OpenCV's Mat image into something dlib can deal with

@@ -1,0 +1,10 @@
+../roscom/__init__.py
+../roscom/helpers.py
+../roscom/__pycache__/__init__.cpython-34.pyc
+../roscom/__pycache__/helpers.cpython-34.pyc
+./
+entry_points.txt
+top_level.txt
+dependency_links.txt
+SOURCES.txt
+PKG-INFO
