@@ -7,7 +7,6 @@ Open a new terminal and execute the following commands one by one.
 
 `git clone https://github.com/hansonrobotics/dlib_ws.git` # Get the necessary ros packages and source codes
 ```
-
 cd dlib_ws
 catkin_make
 source devel/setup.bash
