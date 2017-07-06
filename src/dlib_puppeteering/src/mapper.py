@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import rospy
+import os
 
 import roslib
 #import cv2
@@ -30,6 +31,7 @@ class dlib_puppeteering:
     self.indexes_smileleft= [30]#[24, 25, 30, 31]
     self.indexes_smileright= [31]#[24, 25, 30, 31]
     self.indexes_lowerlipdown = [36, 38, 40]
+    self.homedir = os.getenv("HOME")
 
     self.pub_pau = rospy.Publisher('/blender_api/set_pau', pau, queue_size=10)
     self.image_sub = rospy.Subscriber("/dlib_values", lm_points, self.dlib_callback)
@@ -124,8 +126,8 @@ class dlib_puppeteering:
 
   def ridge_lipupperleft(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/lipupperleft_m_dlib.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/lipupperleft_m_fs.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/lipupperleft_m_dlib.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/lipupperleft_m_fs.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -137,8 +139,8 @@ class dlib_puppeteering:
 
   '''def ridge_leftsmile(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_dlib_xy.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_left.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_dlib_xy.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_left.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -149,8 +151,8 @@ class dlib_puppeteering:
 
   def ridge_leftsmile(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_newL.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_left.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_newL.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_left.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -162,8 +164,8 @@ class dlib_puppeteering:
 
   def ridge_rightsmile(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_new1.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_newR_fs.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_new1.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/dlib_new/smile_newR_fs.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -175,8 +177,8 @@ class dlib_puppeteering:
 
   def ridge_openlowerlip(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/open_dlib.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/lipslowerdown_open_fs.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/open_dlib.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/lipslowerdown_open_fs.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -188,9 +190,9 @@ class dlib_puppeteering:
 
   def ridge_jawleft(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/jawleft_dlib.csv", delimiter=",", skiprows=1)
-      #dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/jawleft_dlib_new.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/jawleft_fs.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/jawleft_dlib.csv", delimiter=",", skiprows=1)
+      #dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/jawleft_dlib_new.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/jawleft_fs.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -202,9 +204,9 @@ class dlib_puppeteering:
 
   def ridge_mouthleft(self):
 
-      dlib = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/mouthleft_dlib.csv", delimiter=",", skiprows=1)
-      #fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/mouthleft_only_fs.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/mouthleft_only_fs1.csv", delimiter=",", skiprows=1)
+      dlib = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/mouthleft_dlib.csv", delimiter=",", skiprows=1)
+      #fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/mouthleft_only_fs.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/mouthleft_only_fs1.csv", delimiter=",", skiprows=1)
       dlib_array = numpy.array(dlib)
       fs_array = numpy.array(fs)
       
@@ -215,9 +217,9 @@ class dlib_puppeteering:
       
 
   def ridge_brow_model(self):
-      dlib_xy = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/browsup_unnormalized1.csv", delimiter=",", skiprows=1)
-      #dlib_xy = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/browsup_normalized_new.csv", delimiter=",", skiprows=1)
-      fs = numpy.loadtxt('' + "/home/meareg/dlib_ws/src/dlib_puppeteering/src/fs_browsup_eyeblink.csv", delimiter=",", skiprows=1)
+      dlib_xy = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/browsup_unnormalized1.csv", delimiter=",", skiprows=1)
+      #dlib_xy = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/browsup_normalized_new.csv", delimiter=",", skiprows=1)
+      fs = numpy.loadtxt('' + self.homedir+"/dlib_ws/src/dlib_puppeteering/src/fs_browsup_eyeblink.csv", delimiter=",", skiprows=1)
       dlib_xy_array = numpy.array(dlib_xy)
       fs_array = numpy.array(fs)
       #print(dlib_xy)

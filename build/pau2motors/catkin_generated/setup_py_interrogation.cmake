@@ -1,6 +1,0 @@
-set(pau2motors_SETUP_PY_VERSION "0.0.1")
-set(pau2motors_SETUP_PY_SCRIPTS "")
-set(pau2motors_SETUP_PY_PACKAGES "pau2motors")
-set(pau2motors_SETUP_PY_PACKAGE_DIRS "src/pau2motors")
-set(pau2motors_SETUP_PY_MODULES "")
-set(pau2motors_SETUP_PY_MODULE_DIRS "")
