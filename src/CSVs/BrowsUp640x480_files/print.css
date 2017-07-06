@@ -1,0 +1,23 @@
+@font-face{font-family:appleLogo;src:local("Lucida Grande");unicode-range:U+F8FF}
+@page{margin:.5in .5in 1in}
+@media print{#file_comment_form,#footer,#god-bar-compact,#header,#menu,.col_left,header{display:none}
+.no_print{display:none!important}
+.print_only{display:block!important}
+.print_only_inline{display:inline!important}
+#page_contents{padding:0}
+.col_right{float:none!important;margin:2rem auto}
+.snippet .col_right{width:100%}
+.card{box-shadow:none;padding:0 0 1rem!important}
+.post_body,h2,p{color:#000}
+#post_container li,#post_container p,.post_body li,.post_body p{font-size:12pt;line-height:16pt!important}
+#file_page h1{font-size:1.5rem;line-height:2rem}
+hr{border-top:2px solid #000}
+.CodeMirror{border:none;font-size:10pt;line-height:12pt}
+.CodeMirror-measure pre{position:static}
+.CodeMirror-wrap pre{word-wrap:break-word;white-space:pre-wrap;word-break:normal}
+.comment{padding-left:0!important}
+body.post #public_file_page,body.snippet #public_file_page{padding:0}
+body.post{font-size:15px;line-height:1.2rem}
+#post_container{max-width:600px}
+.lato,body,h1,h2,h3,h4,h5,li,p{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Tahoma,Arial,sans-serif!important}
+}

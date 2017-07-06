@@ -1,0 +1,149 @@
+/* ########## import ########## */
+/* @import url(/web/resource/css/navigation.aspx); > Moved back into dll call*/
+
+/* ########## navigation ########## */
+#navigation { background: #c71507; /*border-top: 1px solid #fff;*/ color: #ffffff; height: 28px; }
+
+	/* menu */
+	#navigation ul.menu, #navigation ul.menu li a { background: #c71507 url(/web/resource/img/global/header/navigation/menu.gif?v=25102016) no-repeat 0 0; height: 28px; width: 565px;/*865px;*/ }
+		#navigation ul.menu li.disable { display: none; }
+		#navigation ul.menu li { float: left; }
+		#navigation ul.menu a { color: #ffffff; display: block; outline: none; text-decoration: none; text-indent: -9999px; }
+
+	/* sub-menu */
+	#navigation li.hide.region, #navigation li.hide.children ul { display: none !important; }
+	#navigation ul.sub-menu, #navigation ul.sub-menu li a { background: none; height: auto; }
+		#navigation ul.sub-menu li#n-products-home-lcd-tv:hover a { /*border-left: 1px solid black;*/ }
+	/*#navigation ul.sub-menu li#n-products-lcd-tv a:hover { border-left: 1px solid transparent; }*/
+	/*n-products-home-lcd-tv */
+	#navigation ul.sub-menu { left: -9999px; position: absolute; }
+	#navigation ul.menu li:hover ul, #navigation ul.menu li.hover ul { left: auto; z-index: 99; }
+	#navigation ul.sub-menu li { float: none; }
+
+	/* products */
+	#navigation li#n-products ul, #navigation li#n-products ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/products.png?v=20130130) no-repeat 0 0; display: block; }
+
+	/* for-home */
+	#navigation li#n-products-home ul, #navigation li#n-products-home ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/for-home.png) no-repeat 0 0; display: block; }
+
+	/* for-business */
+	#navigation li#n-products-business ul, #navigation li#n-products-business ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/for-business.png?v=20130130) no-repeat 0 0; display: block; }
+
+	/* for-education */
+	#navigation li#n-products-education ul, #navigation li#n-products-education ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/for-education.png) no-repeat 0 0; display: block; }
+
+	/* support */
+	#navigation li#n-support ul, #navigation li#n-support ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/support.png?v=20130130) no-repeat 0 0; display: block; }
+
+	/* press-centre */
+	#navigation li#n-press-centre ul, #navigation li#n-press-centre ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/press-centre.png) no-repeat 0 0; display: block; }
+
+	/* green-toshiba */
+	#navigation li#n-green-toshiba ul, #navigation li#n-green-toshiba ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/green-toshiba.png) no-repeat 0 0; display: block; }
+
+	/* about */
+	#navigation li#n-about ul, #navigation li#n-about ul li a { background: transparent url(/web/resource/img/global/header/navigation/sub-menu/about.png?v=20130904) no-repeat 0 0; display: block; }
+
+    /* shop toshiba */
+    #navigation li#n-shop-toshiba { display: none; }
+	
+/* ########## fixes ########## */
+body.products.business li#n-products-business > a { background-position: -225px -56px !important; }
+body.products.education li#n-products-education > a { background-position: -313px -56px !important; }
+#n-products-education-tela { display:none; } /* Job 765 20150506 */
+body.products.business li#n-products > a, body.products.education li#n-products > a { background-position: 0 0 !important; }
+
+/* Product super menu */
+#navigation { position: relative; }
+#product-super-menu { position: absolute; top: 28px; left: 0; display: none; width: 700px;/*980px;*/ height: 140px; background: transparent url(/web/resource/img/global/header/navigation/products-super-menu.png?v=21102016) no-repeat 0 0; }
+	#product-super-menu > a { display: block; float: left; height: 129px; width: 140px; background: url(/web/resource/img/global/header/navigation/products-super-menu.png?v=21102016) no-repeat 0 0; }
+		#product-super-menu > a#psm-computers { background-position: -0px 0; }
+			#product-super-menu > a#psm-computers:hover { background-position: -0px -139px; }
+		#product-super-menu > a#psm-storage { background-position: -140px 0; }
+			#product-super-menu > a#psm-storage:hover { background-position: -140px -139px; }
+		#product-super-menu > a#psm-tvs { background-position: -280px 0; }
+			#product-super-menu > a#psm-tvs:hover { background-position: -280px -139px; }
+		#product-super-menu > a#psm-projectors { background-position: -420px 0; }
+			#product-super-menu > a#psm-projectors:hover { background-position: -420px -139px; }
+		#product-super-menu > a#psm-digital-signage { background-position: -560px 0;}
+			#product-super-menu > a#psm-digital-signage:hover { background-position: -560px -139px; }	
+		/*#product-super-menu > a#psm-camcorders { background-position: -560px 0;}
+			#product-super-menu > a#psm-camcorders:hover { background-position: -560px -139px; }*/
+		#product-super-menu > a#psm-bluray { background-position: -700px 0; }
+			#product-super-menu > a#psm-bluray:hover { background-position: -700px -139px; }
+		#product-super-menu > a#psm-accessories { background-position: -840px 0; }
+			#product-super-menu > a#psm-accessories:hover { background-position: -840px -139px; }
+		#product-super-menu > a#psm-audio { background-position: -980px 0; display:none;}
+			#product-super-menu > a#psm-audio:hover { background-position: -980px -139px; }
+		#product-super-menu > a#psm-hybrids { background-position: -1120px 0; }
+			#product-super-menu > a#psm-hybrids:hover { background-position: -1120px -140px; }
+		#product-super-menu > a#psm-laptops { background-position: -1260px 0; }
+			#product-super-menu > a#psm-laptops:hover { background-position: -1260px -140px; }
+		#product-super-menu > a#psm-tablets { background-position: -1400px 0; display:none;}
+			#product-super-menu > a#psm-tablets:hover { background-position: -1400px -139px; }
+		#product-super-menu > a#psm-ultrabooks { background-position: -1540px 0; display:none; }
+			#product-super-menu > a#psm-ultrabooks:hover { background-position: -1540px -140px; }
+			
+
+#shop-super-menu { position: absolute; top: 28px; right: 0px; display: none; width: auto; height: 140px; background: transparent url(/web/resource/img/global/header/navigation/shopnow-super-menu.png?v=20130701) no-repeat 0px 0px; }
+	#shop-super-menu > a { display: block; float: left; height: 129px; width: 140px; background: url(/web/resource/img/global/header/navigation/shopnow-super-menu.png?v=20130701) no-repeat 0px 0px; }
+
+		#shop-super-menu > a#shop-computers { background-position: -0px 0px; }
+			#shop-super-menu > a#shop-computers:hover { background-position: -0px -139px; }
+		#shop-super-menu > a#shop-storage { background-position: -140px 0px; }
+			#shop-super-menu > a#shop-storage:hover { background-position: -140px -139px; }
+		#shop-super-menu > a#shop-tvs { background-position: -280px 0px; }
+			#shop-super-menu > a#shop-tvs:hover { background-position: -280px -139px; }
+		#shop-super-menu > a#shop-projectors { background-position: -420px 0px; }
+			#shop-super-menu > a#shop-projectors:hover { background-position: -420px -139px; }
+		#shop-super-menu > a#shop-camcorders { background-position: -560px 0px; }
+			#shop-super-menu > a#shop-camcorders:hover { background-position: -560px -139px; }
+		#shop-super-menu > a#shop-bluray { background-position: -700px 0px; }
+			#shop-super-menu > a#shop-bluray:hover { background-position: -700px -139px; }
+		#shop-super-menu > a#shop-accessories { background-position: -840px 0px; }
+			#shop-super-menu > a#shop-accessories:hover { background-position: -840px -139px; }
+		#shop-super-menu > a#shop-audio { background-position: -980px 0px; }
+			#shop-super-menu > a#shop-audio:hover { background-position: -980px -139px; }
+		#shop-super-menu > a#shop-clearance { background-position: -1121px 0px; }
+			#shop-super-menu > a#shop-clearance:hover { background-position: -1121px -139px; }
+
+
+
+#n-products > ul { display: none !important; }
+#navigation ul.menu li#n-products a.hover { background-position: 0px -28px !important; }
+
+#business-super-menu { position: absolute; top: 28px; left: 37px; display: none; width: 700px; height: 140px; background: transparent url(/web/resource/img/global/header/navigation/business-super-menu.png?v=20130816) no-repeat 0px 0px; }
+	#business-super-menu > a { display: block; float: left; height: 129px; width: 140px; background: url(/web/resource/img/global/header/navigation/business-super-menu.png?v=20130816) no-repeat 0px 0px; }
+		#business-super-menu > a#bsm-computers { background-position: -0px 0px; }
+			#business-super-menu > a#bsm-computers:hover { background-position: -0px -139px; }
+		#business-super-menu > a#bsm-tvs { background-position: -140px 0px; }
+			#business-super-menu > a#bsm-tvs:hover { background-position: -140px -139px; }
+		#business-super-menu > a#bsm-projectors { background-position: -280px 0px; }
+			#business-super-menu > a#bsm-projectors:hover { background-position: -280px -139px; }
+		#business-super-menu > a#bsm-accessories { background-position: -420px 0px; }
+			#business-super-menu > a#bsm-accessories:hover { background-position: -420px -139px; }
+		#business-super-menu > a#bsm-signage { background-position: -560px 0px; }
+			#business-super-menu > a#bsm-signage:hover { background-position: -560px -140px; }
+		#business-super-menu > a#bsm-managed { background-position: -700px 0px; }
+			#business-super-menu > a#bsm-managed:hover { background-position: -700px -140px; }
+
+#n-products-business > ul { display: none !important; }
+#navigation ul.menu li#n-products-business a.hover { background-position: -225px -28px !important; }
+
+#support-super-menu { z-index: 999; position: absolute; top: 28px; left: 359px; display: none; width: 280px; height: 216px; overflow: hidden; /*background: transparent url(/web/resource/img/global/header/navigation/support-super-menu-216px.png) no-repeat 0px 0px;*/ }
+	#support-super-menu > a { display: block; float:left ; height: 102px; width: 280px; /*background: url(/web/resource/img/global/header/navigation/support-super-menu-216px.png) no-repeat 0px -60px;*/ }
+		#support-super-menu > a#ssm-downloads { margin-top: 0px;/*60px;*/ background-position: -0px -60px; }
+			#support-super-menu > a#ssm-downloads:hover { background-position: -280px -60px; }
+		#support-super-menu > a#ssm-service { background-position: -0px -102px; }
+			#support-super-menu > a#ssm-service:hover { background-position: -280px -105px; }
+
+#navigation li#n-support a.hover { background-position: -361px -28px !important; }
+
+#navigation ul.menu li#n-support ul.sub-menu { left: 104px !important;/*left: 414px !important;*/ display: none; }
+
+#navigation li#n-support.hover ul.sub-menu, #navigation ul.menu li#n-support.hover ul.sub-menu li a { display: block !important; }
+
+#navigation li#n-support li#n-support-warranty-extended,
+#navigation li#n-support li#n-n-check-a-service {
+    display: none !important;
+}

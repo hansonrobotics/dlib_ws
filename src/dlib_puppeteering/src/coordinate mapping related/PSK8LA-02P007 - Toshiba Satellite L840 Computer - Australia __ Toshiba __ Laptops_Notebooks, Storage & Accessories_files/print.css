@@ -1,0 +1,19 @@
+﻿#body {
+	font-family: arial;
+	font-size: 8pt;
+}
+
+#region,
+#masthead,
+#navigation,
+#breadcrumb,
+div.column.side,
+#footer,
+div.microsoft,
+div.header div.buttons,
+#launch-gallery,
+#product-navigation,
+#product-resources
+{
+	display: none;
+}
