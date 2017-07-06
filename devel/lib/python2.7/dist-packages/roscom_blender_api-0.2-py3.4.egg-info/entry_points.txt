@@ -1,3 +1,0 @@
-[blender_api.command_source.build]
-ros = roscom:build
-
