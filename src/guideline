@@ -1,1 +1,0 @@
-take neutral state(zero state) of some shape keys from the neutral.csv of the fs/dlib pair; when there is no a zero valued shape key values at its particular csv file.
